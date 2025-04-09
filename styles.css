@@ -1,0 +1,17 @@
+h1 {
+  text-align: center;
+}
+.container {
+  display: flex;
+  width: 40rem;
+  height: 40rem;
+  align-self: center;
+  margin: auto;
+
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.square {
+}
