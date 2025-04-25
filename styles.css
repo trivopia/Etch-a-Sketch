@@ -4,7 +4,6 @@ h1 {
 }
 .container {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
 
   width: 40rem;
@@ -23,10 +22,15 @@ h1 {
   box-sizing: border-box;
 }
 
-.hover {
-  background-color: rgb(238, 237, 237);
+.square:hover {
+  background-color: rgb(214, 214, 214);
 }
 
-.clicked {
-  background-color: rgb(46, 46, 46);
+.painted {
+  background-color: rgb(235, 55, 205);
+}
+
+.square.painted:hover {
+  background-color: rgb(235, 55, 205);
+  opacity: 80%;
 }
