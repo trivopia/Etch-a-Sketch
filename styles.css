@@ -1,11 +1,14 @@
 h1 {
   text-align: center;
+  margin-bottom: 10px;
 }
 .container {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
   width: 40rem;
   height: 40rem;
-  align-self: center;
   margin: auto;
 
   border-color: black;
@@ -14,4 +17,16 @@ h1 {
 }
 
 .square {
+  border-style: solid;
+  border-color: rgb(206, 204, 204);
+  border-width: thin;
+  box-sizing: border-box;
+}
+
+.hover {
+  background-color: rgb(238, 237, 237);
+}
+
+.clicked {
+  background-color: rgb(46, 46, 46);
 }
