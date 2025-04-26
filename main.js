@@ -2,7 +2,7 @@ addDiv(10);
 paint();
 
 function addDiv(n) {
-  let container = document.querySelector(".container");
+  let container = document.querySelector(".canvas");
 
   for (let i = 0; i < n * n; i++) {
     let newSquare = document.createElement("div");
@@ -16,9 +16,9 @@ function addDiv(n) {
 
 function paint() {
   let mouseState;
-  let container = document.querySelector(".container");
+  let canvas = document.querySelector(".canvas");
 
-  container.addEventListener("mousedown", function (event) {
+  canvas.addEventListener("mousedown", function (event) {
     mouseState = true;
     if (event.target.classList.contains("square")) {
       event.target.classList.add("painted");
@@ -29,7 +29,7 @@ function paint() {
     mouseState = false;
   });
 
-  container.addEventListener("mouseover", function (event) {
+  canvas.addEventListener("mouseover", function (event) {
     if (mouseState && event.target.classList.contains("square")) {
       event.target.classList.add("painted");
     }

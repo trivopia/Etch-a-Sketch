@@ -9,9 +9,39 @@
 
   <body>
     <h1>Etch-a-Sketch</h1>
+    <div class="container">
+      <div class="ui">
+        <div class="set-canvas">
+          <h3>Canvas Size</h3>
+          <div>
+            <input type="text" placeholder="Grid Size" />
+            <button>Set</button>
+          </div>
+        </div>
 
-    <div class="container"></div>
+        <div class="tools">
+          <h3>Tools</h3>
+          <div class="tools-buttons">
+            <button>Brush</button>
+            <button>Eraser</button>
+            <button>Reset</button>
 
+            <button>Toggle border</button>
+          </div>
+        </div>
+
+        <div class="colors">
+          <h3>Colors</h3>
+          <div class="colors-buttons">
+            <button>Set Color</button>
+            <button>Random Mode</button>
+            <button>Darker Mode</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="canvas"></div>
+    </div>
     <script src="./main.js"></script>
   </body>
 </html>

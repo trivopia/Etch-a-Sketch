@@ -2,13 +2,39 @@ h1 {
   text-align: center;
   margin-bottom: 10px;
 }
+
+h3 {
+  margin: 0;
+}
+
 .container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.ui {
+  display: flex;
+  flex-direction: column;
+}
+
+.tools-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.colors-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.canvas {
   display: flex;
   flex-wrap: wrap;
 
   width: 40rem;
   height: 40rem;
-  margin: auto;
+  margin: 0;
 
   border-color: black;
   border-width: 1px;
