@@ -2,7 +2,7 @@ addDiv(10);
 paint();
 
 function addDiv(n) {
-  let container = document.querySelector(".canvas");
+  let canvas = document.querySelector(".canvas");
 
   for (let i = 0; i < n * n; i++) {
     let newSquare = document.createElement("div");
@@ -10,7 +10,7 @@ function addDiv(n) {
 
     newSquare.style.width = `${40 / n}rem`;
     newSquare.style.height = `${40 / n}rem`;
-    container.append(newSquare);
+    canvas.append(newSquare);
   }
 }
 
