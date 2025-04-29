@@ -18,6 +18,11 @@ h3 {
   flex-direction: column;
 }
 
+.settingButtons {
+  display: flex;
+  flex-direction: column;
+}
+
 .toolButtons {
   display: flex;
   flex-direction: column;
@@ -43,7 +48,7 @@ h3 {
 
 .square {
   border-style: solid;
-  border-color: rgb(206, 204, 204);
+  border-color: rgb(233, 233, 233);
   border-width: thin;
   box-sizing: border-box;
 }
