@@ -3,6 +3,7 @@ let currentState = "brush";
 addDiv(10);
 updateState();
 brush();
+eraser();
 
 function addDiv(n) {
   let canvas = document.querySelector(".canvas");
@@ -58,7 +59,29 @@ function eraser() {
   let mouseState;
   let canvas = document.querySelector(".canvas");
 
-  canvas.addEventListener("mousedown", function (event) {});
+  canvas.addEventListener("mousedown", function (event) {
+    if (
+      currentState === "eraser" &&
+      event.target.classList.contains("square")
+    ) {
+      mouseState = true;
+      event.target.classList.remove("brushed");
+    }
+  });
+
+  canvas.addEventListener("mouseover", function (event) {
+    if (
+      currentState === "eraser" &&
+      mouseState === true &&
+      event.target.classList.contains("square")
+    ) {
+      event.target.classList.remove("brushed");
+    }
+  });
+
+  canvas.addEventListener("mouseup", function () {
+    mouseState = false;
+  });
 }
 
 /** old paint function 
