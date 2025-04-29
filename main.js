@@ -5,6 +5,7 @@ updateState();
 brush();
 eraser();
 reset();
+toggleBorder();
 
 function addDiv(n) {
   let canvas = document.querySelector(".canvas");
@@ -21,8 +22,18 @@ function addDiv(n) {
 
 function updateState() {
   let toolButtons = document.querySelectorAll(".tools button, .colors button");
+  const excludedClasses = [
+    "toggleBorder",
+    "setColor",
+    "randomMode",
+    "darkerMode",
+  ];
 
   toolButtons.forEach((button) => {
+    if (excludedClasses.some((cls) => button.classList.contains(cls))) {
+      return;
+    }
+
     button.addEventListener("click", function () {
       currentState = button.classList[0];
       console.log(currentState);
@@ -96,6 +107,22 @@ function reset() {
     currentState = "brush";
   });
 }
+
+function toggleBorder() {
+  let toggleBtn = document.querySelector(".toggleBorder");
+  let squares = document.querySelectorAll(".square");
+
+  toggleBtn.addEventListener("click", function () {
+    squares.forEach((square) => {
+      if (!square.classList.contains("borderNone")) {
+        square.classList.add("borderNone");
+      } else {
+        square.classList.remove("borderNone");
+      }
+    });
+  });
+}
+
 /** old paint function 
 *
 function paint() {

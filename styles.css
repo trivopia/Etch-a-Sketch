@@ -18,12 +18,12 @@ h3 {
   flex-direction: column;
 }
 
-.tools-buttons {
+.toolButtons {
   display: flex;
   flex-direction: column;
 }
 
-.colors-buttons {
+.colorButtons {
   display: flex;
   flex-direction: column;
 }
@@ -59,4 +59,8 @@ h3 {
 .square.brushed:hover {
   background-color: rgb(235, 55, 205);
   opacity: 80%;
+}
+
+.borderNone {
+  border-style: none;
 }
