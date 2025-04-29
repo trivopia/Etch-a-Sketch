@@ -1,5 +1,8 @@
+let currentState = "brush";
+
 addDiv(10);
-paint();
+updateState();
+brush();
 
 function addDiv(n) {
   let canvas = document.querySelector(".canvas");
@@ -14,14 +17,25 @@ function addDiv(n) {
   }
 }
 
-function paint() {
+function updateState() {
+  let toolButtons = document.querySelectorAll(".tools button, .colors button");
+
+  toolButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      currentState = button.classList[0];
+      console.log(currentState);
+    });
+  });
+}
+
+function brush() {
   let mouseState;
   let canvas = document.querySelector(".canvas");
 
   canvas.addEventListener("mousedown", function (event) {
     mouseState = true;
-    if (event.target.classList.contains("square")) {
-      event.target.classList.add("painted");
+    if (currentState === "brush" && event.target.classList.contains("square")) {
+      event.target.classList.add("brushed");
     }
   });
 
@@ -30,10 +44,21 @@ function paint() {
   });
 
   canvas.addEventListener("mouseover", function (event) {
-    if (mouseState && event.target.classList.contains("square")) {
-      event.target.classList.add("painted");
+    if (
+      currentState === "brush" &&
+      mouseState &&
+      event.target.classList.contains("square")
+    ) {
+      event.target.classList.add("brushed");
     }
   });
+}
+
+function eraser() {
+  let mouseState;
+  let canvas = document.querySelector(".canvas");
+
+  canvas.addEventListener("mousedown", function (event) {});
 }
 
 /** old paint function 

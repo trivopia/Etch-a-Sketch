@@ -52,11 +52,11 @@ h3 {
   background-color: rgb(214, 214, 214);
 }
 
-.painted {
+.brushed {
   background-color: rgb(235, 55, 205);
 }
 
-.square.painted:hover {
+.square.brushed:hover {
   background-color: rgb(235, 55, 205);
   opacity: 80%;
 }
