@@ -4,6 +4,7 @@ addDiv(10);
 updateState();
 brush();
 eraser();
+reset();
 
 function addDiv(n) {
   let canvas = document.querySelector(".canvas");
@@ -84,6 +85,17 @@ function eraser() {
   });
 }
 
+function reset() {
+  let resetBtn = document.querySelector(".reset");
+  let squares = document.querySelectorAll(".square");
+
+  resetBtn.addEventListener("click", function () {
+    squares.forEach((square) => {
+      square.classList.remove("brushed");
+    });
+    currentState = "brush";
+  });
+}
 /** old paint function 
 *
 function paint() {
