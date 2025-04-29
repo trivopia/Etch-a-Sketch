@@ -1,10 +1,11 @@
-let currentState = "brush";
+let toolState = "brush";
+let colorState;
 
 addDiv(10);
-updateState();
+updateToolState();
 brush();
 eraser();
-reset();
+clear();
 toggleBorder();
 
 function addDiv(n) {
@@ -20,23 +21,19 @@ function addDiv(n) {
   }
 }
 
-function updateState() {
-  let toolButtons = document.querySelectorAll(".tools button, .colors button");
-  const excludedClasses = [
-    "toggleBorder",
-    "setColor",
-    "randomMode",
-    "darkerMode",
-  ];
+function updateToolState() {
+  let toolButtons = document.querySelectorAll(".toolButtons button");
 
   toolButtons.forEach((button) => {
-    if (excludedClasses.some((cls) => button.classList.contains(cls))) {
-      return;
-    }
-
     button.addEventListener("click", function () {
-      currentState = button.classList[0];
-      console.log(currentState);
+      if (button.classList[0] === "clear") {
+        toolState = "brush";
+        console.log(`Canvas cleared. Current Tool: brush`);
+        return;
+      } else {
+        toolState = button.classList[0];
+        console.log(`Current Tool: ${toolState}`);
+      }
     });
   });
 }
@@ -47,7 +44,7 @@ function brush() {
 
   canvas.addEventListener("mousedown", function (event) {
     mouseState = true;
-    if (currentState === "brush" && event.target.classList.contains("square")) {
+    if (toolState === "brush" && event.target.classList.contains("square")) {
       event.target.classList.add("brushed");
     }
   });
@@ -58,7 +55,7 @@ function brush() {
 
   canvas.addEventListener("mouseover", function (event) {
     if (
-      currentState === "brush" &&
+      toolState === "brush" &&
       mouseState &&
       event.target.classList.contains("square")
     ) {
@@ -72,10 +69,7 @@ function eraser() {
   let canvas = document.querySelector(".canvas");
 
   canvas.addEventListener("mousedown", function (event) {
-    if (
-      currentState === "eraser" &&
-      event.target.classList.contains("square")
-    ) {
+    if (toolState === "eraser" && event.target.classList.contains("square")) {
       mouseState = true;
       event.target.classList.remove("brushed");
     }
@@ -83,7 +77,7 @@ function eraser() {
 
   canvas.addEventListener("mouseover", function (event) {
     if (
-      currentState === "eraser" &&
+      toolState === "eraser" &&
       mouseState === true &&
       event.target.classList.contains("square")
     ) {
@@ -96,15 +90,15 @@ function eraser() {
   });
 }
 
-function reset() {
-  let resetBtn = document.querySelector(".reset");
+function clear() {
+  let clearBtn = document.querySelector(".clear");
   let squares = document.querySelectorAll(".square");
 
-  resetBtn.addEventListener("click", function () {
+  clearBtn.addEventListener("click", function () {
     squares.forEach((square) => {
       square.classList.remove("brushed");
     });
-    currentState = "brush";
+    toolState = "brush";
   });
 }
 
