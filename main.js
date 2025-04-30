@@ -3,6 +3,7 @@ let colorState;
 
 addDiv(10);
 updateToolState();
+updateColorState();
 brush();
 eraser();
 clear();
@@ -34,6 +35,17 @@ function updateToolState() {
         toolState = button.classList[0];
         console.log(`Current Tool: ${toolState}`);
       }
+    });
+  });
+}
+
+function updateColorState() {
+  let colorButtons = document.querySelectorAll(".colorButtons button");
+
+  colorButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      colorState = button.classList[0];
+      console.log(`Current Color: ${colorState}`);
     });
   });
 }
