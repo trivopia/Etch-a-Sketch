@@ -1,7 +1,7 @@
 let toolState = "brush";
 let colorState;
 
-addDiv(10);
+addToCanvas();
 updateToolState();
 updateColorState();
 brush();
@@ -9,8 +9,9 @@ eraser();
 clear();
 toggleBorder();
 
-function addDiv(n) {
+function createSquares(n) {
   let canvas = document.querySelector(".canvas");
+  canvas.innerHTML = "";
 
   for (let i = 0; i < n * n; i++) {
     let newSquare = document.createElement("div");
@@ -20,6 +21,21 @@ function addDiv(n) {
     newSquare.style.height = `${40 / n}rem`;
     canvas.append(newSquare);
   }
+}
+
+function addToCanvas() {
+  let setButton = document.querySelector(".set");
+  let slider = document.querySelector(".slider");
+  let canvasSizeUI = document.querySelector(".canvasSizeValue");
+
+  slider.addEventListener("input", function () {
+    canvasSizeUI.textContent = `${slider.value} x ${slider.value}`;
+  });
+
+  setButton.addEventListener("click", function () {
+    console.log(slider.value);
+    createSquares(slider.value);
+  });
 }
 
 function updateToolState() {

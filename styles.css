@@ -18,6 +18,17 @@ h3 {
   flex-direction: column;
 }
 
+.setCanvas,
+.settings,
+.tools {
+  display: flex;
+  flex-direction: column;
+}
+
+.canvasSizeValue {
+  align-self: center;
+}
+
 .settingButtons {
   display: flex;
   flex-direction: column;
