@@ -1,42 +1,16 @@
 let toolState = "brush";
 let colorState;
 
-addToCanvas();
 updateToolState();
 updateColorState();
+
+addToCanvas();
+
 brush();
 eraser();
 clear();
+
 toggleBorder();
-
-function createSquares(n) {
-  let canvas = document.querySelector(".canvas");
-  canvas.innerHTML = "";
-
-  for (let i = 0; i < n * n; i++) {
-    let newSquare = document.createElement("div");
-    newSquare.classList.add("square");
-
-    newSquare.style.width = `${40 / n}rem`;
-    newSquare.style.height = `${40 / n}rem`;
-    canvas.append(newSquare);
-  }
-}
-
-function addToCanvas() {
-  let setButton = document.querySelector(".set");
-  let slider = document.querySelector(".slider");
-  let canvasSizeUI = document.querySelector(".canvasSizeValue");
-
-  slider.addEventListener("input", function () {
-    canvasSizeUI.textContent = `${slider.value} x ${slider.value}`;
-  });
-
-  setButton.addEventListener("click", function () {
-    console.log(slider.value);
-    createSquares(slider.value);
-  });
-}
 
 function updateToolState() {
   let toolButtons = document.querySelectorAll(".toolButtons button");
@@ -63,6 +37,36 @@ function updateColorState() {
       colorState = button.classList[0];
       console.log(`Current Color: ${colorState}`);
     });
+  });
+}
+
+function createSquares(n) {
+  let canvas = document.querySelector(".canvas");
+  canvas.innerHTML = "";
+
+  for (let i = 0; i < n * n; i++) {
+    let newSquare = document.createElement("div");
+
+    newSquare.classList.add("square");
+    newSquare.style.width = `${40 / n}rem`;
+    newSquare.style.height = `${40 / n}rem`;
+
+    canvas.append(newSquare);
+  }
+}
+
+function addToCanvas() {
+  let setButton = document.querySelector(".set");
+  let slider = document.querySelector(".slider");
+  let canvasSizeUI = document.querySelector(".canvasSizeValue");
+
+  slider.addEventListener("input", function () {
+    canvasSizeUI.textContent = `${slider.value} x ${slider.value}`;
+  });
+
+  setButton.addEventListener("click", function () {
+    console.log(slider.value);
+    createSquares(slider.value);
   });
 }
 
@@ -120,9 +124,9 @@ function eraser() {
 
 function clear() {
   let clearBtn = document.querySelector(".clear");
-  let squares = document.querySelectorAll(".square");
 
   clearBtn.addEventListener("click", function () {
+    let squares = document.querySelectorAll(".square");
     squares.forEach((square) => {
       square.classList.remove("brushed");
     });
@@ -132,16 +136,10 @@ function clear() {
 
 function toggleBorder() {
   let toggleBtn = document.querySelector(".toggleBorder");
-  let squares = document.querySelectorAll(".square");
+  let canvas = document.querySelector(".canvas");
 
   toggleBtn.addEventListener("click", function () {
-    squares.forEach((square) => {
-      if (!square.classList.contains("borderNone")) {
-        square.classList.add("borderNone");
-      } else {
-        square.classList.remove("borderNone");
-      }
-    });
+    canvas.classList.toggle("borderNone");
   });
 }
 
