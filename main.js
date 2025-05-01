@@ -11,6 +11,7 @@ eraser();
 clear();
 
 toggleBorder();
+roundBorder();
 
 function updateToolState() {
   let toolButtons = document.querySelectorAll(".toolButtons button");
@@ -140,6 +141,15 @@ function toggleBorder() {
 
   toggleBtn.addEventListener("click", function () {
     canvas.classList.toggle("borderNone");
+  });
+}
+
+function roundBorder() {
+  let roundBorderBtn = document.querySelector(".roundBorder");
+  let canvas = document.querySelector(".canvas");
+
+  roundBorderBtn.addEventListener("click", function () {
+    canvas.classList.toggle("roundedBorder");
   });
 }
 

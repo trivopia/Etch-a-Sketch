@@ -80,3 +80,7 @@ h3 {
 .canvas.borderNone .square {
   border: none;
 }
+
+.canvas.roundedBorder .square {
+  border-radius: 20px;
+}
