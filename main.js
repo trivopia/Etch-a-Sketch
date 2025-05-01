@@ -1,10 +1,14 @@
 let toolState = "brush";
 let colorState;
 
+document.addEventListener("DOMContentLoaded", function () {
+  createSquares(10);
+});
+
 updateToolState();
 updateColorState();
 
-addToCanvas();
+setCanvasSize();
 
 brush();
 eraser();
@@ -56,7 +60,7 @@ function createSquares(n) {
   }
 }
 
-function addToCanvas() {
+function setCanvasSize() {
   let setButton = document.querySelector(".set");
   let slider = document.querySelector(".slider");
   let canvasSizeUI = document.querySelector(".canvasSizeValue");
